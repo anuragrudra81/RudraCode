@@ -15,10 +15,9 @@ export default function BookingPage() {
         onLoad={() => setLoading(false)}
         onError={() => setLoading(false)}
       />
-      <div className="relative h-screen w-screen">
+      <div className="relative h-screen w-screen overflow-hidden">
         {loading && (
           <div className="absolute inset-0 z-10 flex items-center justify-center bg-background">
-            {/* You can use a spinner or a more complex skeleton here if you like */}
             <p>Loading booking calendar...</p>
           </div>
         )}
