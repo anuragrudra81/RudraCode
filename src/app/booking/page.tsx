@@ -9,14 +9,14 @@ export default function BookingPage() {
   const calendlyUrl = "https://calendly.com/rudracode/30min";
 
   useEffect(() => {
+    const head = document.querySelector('head');
     const script = document.createElement('script');
-    script.src = 'https://assets.calendly.com/assets/external/widget.js';
-    script.async = true;
-    document.body.appendChild(script);
+    script.setAttribute('src',  'https://assets.calendly.com/assets/external/widget.js');
+    head?.appendChild(script);
 
     return () => {
-      document.body.removeChild(script);
-    };
+        head?.removeChild(script);
+    }
   }, []);
 
   return (
