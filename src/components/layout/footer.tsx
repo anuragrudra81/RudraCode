@@ -1,8 +1,17 @@
+"use client";
+
+import * as React from "react";
 import { Logo } from '@/components/logo';
 import { Github, Twitter, Linkedin } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Footer() {
+  const [year, setYear] = React.useState(new Date().getFullYear());
+
+  React.useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer className="border-t bg-card">
       <div className="container mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -26,7 +35,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t pt-6 text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} RudraCode Hub. All rights reserved.
+          © {year} RudraCode Hub. All rights reserved.
         </div>
       </div>
     </footer>
