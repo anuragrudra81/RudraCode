@@ -9,26 +9,16 @@ import Link from 'next/link';
 import { Mail, Phone } from 'lucide-react';
 
 export default function BookingPage() {
-  const calendlyUrl = "https://calendly.com/rudracode/30min";
+  const calendlyUrl = "https://calendly.com/anuragrudra81/30min";
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // A simple timeout to hide the skeleton loader after a few seconds,
-    // giving Calendly time to initialize. A more robust solution
-    // might use Calendly's events if available.
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000); // 2 seconds delay
-
-    return () => clearTimeout(timer);
-  }, []);
-
 
   return (
     <>
       <Script
         src="https://assets.calendly.com/assets/external/widget.js"
         strategy="afterInteractive"
+        onLoad={() => setLoading(false)}
+        onError={() => setLoading(false)} // Also handle script loading errors
       />
       <div className="py-20 md:py-32">
         <div className="container mx-auto max-w-4xl px-4 md:px-6 lg:px-8">
@@ -40,7 +30,7 @@ export default function BookingPage() {
           </div>
           <div className="relative min-h-[700px] w-full rounded-lg bg-card shadow-lg">
             {loading && (
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div className="absolute inset-0 z-10 flex items-center justify-center bg-card rounded-lg">
                 <Skeleton className="h-full w-full rounded-lg" />
               </div>
             )}
