@@ -1,53 +1,35 @@
 
 "use client";
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import Script from 'next/script';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Mail, Phone } from 'lucide-react';
 
 export default function BookingPage() {
-  // Replace with your actual Calendly link
   const calendlyUrl = "https://calendly.com/rudracode/30min";
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const head = document.querySelector('head');
-    if (!head) return;
+    // A simple timeout to hide the skeleton loader after a few seconds,
+    // giving Calendly time to initialize. A more robust solution
+    // might use Calendly's events if available.
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000); // 2 seconds delay
 
-    // Check if the script is already added
-    if (document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]')) {
-      // If script exists, but widget is not there, maybe reload it.
-      // For simplicity, we assume if script is there, it's working or will work.
-      // A more robust solution might involve using Calendly's API.
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.setAttribute('src',  'https://assets.calendly.com/assets/external/widget.js');
-    script.setAttribute('async', '');
-    
-    let scriptCleanUp: () => void = () => {};
-
-    script.onload = () => {
-        // The script is loaded, you could potentially call Calendly's init functions
-        // if they were exposed and needed, but the widget usually auto-initializes.
-    };
-    
-    head.appendChild(script);
-
-    scriptCleanUp = () => {
-      const scriptElement = document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]');
-      if (scriptElement) {
-        head.removeChild(scriptElement);
-      }
-    };
-
-    return scriptCleanUp;
+    return () => clearTimeout(timer);
   }, []);
+
 
   return (
     <>
+      <Script
+        src="https://assets.calendly.com/assets/external/widget.js"
+        strategy="afterInteractive"
+      />
       <div className="py-20 md:py-32">
         <div className="container mx-auto max-w-4xl px-4 md:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -56,11 +38,20 @@ export default function BookingPage() {
               Schedule a free consultation with our team to discuss your project needs. Pick a time that works for you below.
             </p>
           </div>
-          <div
-            className="calendly-inline-widget w-full min-h-[700px] bg-card rounded-lg shadow-lg"
-            data-url={calendlyUrl}
-          >
-            <Skeleton className="w-full h-[700px] rounded-lg" />
+          <div className="relative min-h-[700px] w-full rounded-lg bg-card shadow-lg">
+            {loading && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Skeleton className="h-full w-full rounded-lg" />
+              </div>
+            )}
+            <div
+              className="calendly-inline-widget w-full min-h-[700px]"
+              data-url={calendlyUrl}
+              style={{
+                opacity: loading ? 0 : 1,
+                transition: 'opacity 0.5s ease-in-out',
+              }}
+            ></div>
           </div>
         </div>
       </div>
