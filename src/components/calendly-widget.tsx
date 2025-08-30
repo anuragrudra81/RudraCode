@@ -24,7 +24,7 @@ export default function CalendlyWidget() {
   return (
     <div 
       className="calendly-inline-widget w-full min-h-[700px] bg-card rounded-lg shadow-lg"
-      data-url="https://calendly.com/your-username" // IMPORTANT: Replace with your actual Calendly link
+      data-url="https://calendly.com/rudracode/30min" // IMPORTANT: Replace with your actual Calendly link
     >
       <Skeleton className="w-full h-[700px] rounded-lg" />
     </div>
