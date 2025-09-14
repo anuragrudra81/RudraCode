@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Logo } from '@/components/logo';
-import { Github, Twitter, Linkedin } from 'lucide-react';
+import { Github, Linkedin, Facebook } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -23,13 +23,13 @@ export default function Footer() {
             </p>
           </div>
           <div className="flex items-center space-x-4">
-            <Link href="#" className="text-muted-foreground transition-colors hover:text-primary" aria-label="Twitter">
-              <Twitter className="h-6 w-6" />
+            <Link href="https://www.facebook.com/anurag.rudra.568253" className="text-muted-foreground transition-colors hover:text-primary" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+              <Facebook className="h-6 w-6" />
             </Link>
-            <Link href="#" className="text-muted-foreground transition-colors hover:text-primary" aria-label="GitHub">
+            <Link href="https://github.com/anuragrudra81" className="text-muted-foreground transition-colors hover:text-primary" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
               <Github className="h-6 w-6" />
             </Link>
-            <Link href="#" className="text-muted-foreground transition-colors hover:text-primary" aria-label="LinkedIn">
+            <Link href="https://www.linkedin.com/in/anurag-rudra-293544242/" className="text-muted-foreground transition-colors hover:text-primary" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
               <Linkedin className="h-6 w-6" />
             </Link>
           </div>
