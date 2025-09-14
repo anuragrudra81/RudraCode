@@ -29,7 +29,7 @@ export default function ContactPage() {
                         <div>
                             <h3 className="font-headline text-xl font-semibold">Email</h3>
                             <p className="text-muted-foreground">Contact us via email for any inquiries.</p>
-                            <a href="mailto:contact@rudracode.com" className="text-primary hover:underline">contact@rudracode.com</a>
+                            <a href="mailto:anuragrudra91@gmail.com" className="text-primary hover:underline">anuragrudra91@gmail.com</a>
                         </div>
                     </div>
                     <div className="flex items-start gap-4">
@@ -37,9 +37,9 @@ export default function ContactPage() {
                             <Phone className="h-6 w-6 text-primary" />
                         </div>
                         <div>
-                            <h3 className="font-headline text-xl font-semibold">Phone</h3>
-                            <p className="text-muted-foreground">Give us a call during business hours.</p>
-                            <a href="tel:+1234567890" className="text-primary hover:underline">+1 (234) 567-890</a>
+                            <h3 className="font-headline text-xl font-semibold">WhatsApp</h3>
+                            <p className="text-muted-foreground">Message us on WhatsApp.</p>
+                            <a href="https://wa.me/61424983650" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">+61 424 983 650</a>
                         </div>
                     </div>
                     <div className="flex items-start gap-4">
@@ -48,8 +48,8 @@ export default function ContactPage() {
                         </div>
                         <div>
                             <h3 className="font-headline text-xl font-semibold">Office</h3>
-                            <p className="text-muted-foreground">123 Innovation Drive, Tech City, 12345</p>
-                            <a href="#" className="text-primary hover:underline">Get Directions</a>
+                            <p className="text-muted-foreground">16 Eyebright Rd, Mernda VIC 3754, Melbourne, Australia</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=16+Eyebright+Rd,+Mernda+VIC+3754" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Get Directions</a>
                         </div>
                     </div>
                 </div>
