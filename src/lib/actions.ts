@@ -1,6 +1,9 @@
 "use server";
 
 import { z } from "zod";
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -34,18 +37,39 @@ export async function submitContactForm(prevState: State, formData: FormData): P
   }
 
   const { name, email, message } = validatedFields.data;
+  const emailTo = 'anuragrudra91@gmail.com';
 
-  // In a real application, you would send an email or save to a database here.
-  console.log("New Contact Form Submission:");
-  console.log("Name:", name);
-  console.log("Email:", email);
-  console.log("Message:", message);
+  try {
+    const { data, error } = await resend.emails.send({
+        from: 'Contact Form <onboarding@resend.dev>',
+        to: [emailTo],
+        subject: 'New Contact Form Submission from RudraCode Hub',
+        html: `
+            <p>You have a new contact form submission:</p>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Message:</strong></p>
+            <p>${message}</p>
+        `,
+    });
 
-  // This is a delay to simulate network latency
-  await new Promise(resolve => setTimeout(resolve, 1000));
+    if (error) {
+        console.error("Resend error:", error);
+        return {
+            message: "Sorry, something went wrong and we couldn't send your message. Please try again later.",
+            success: false,
+        };
+    }
 
-  return {
-    message: "Thank you for your message! We will get back to you shortly.",
-    success: true,
-  };
+    return {
+      message: "Thank you for your message! We will get back to you shortly.",
+      success: true,
+    };
+  } catch (exception) {
+      console.error("Email sending exception:", exception);
+      return {
+          message: "An unexpected error occurred. Please try again.",
+          success: false,
+      };
+  }
 }
