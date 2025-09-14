@@ -1,0 +1,121 @@
+{
+  "hero": {
+    "src": "https://picsum.photos/seed/hero/600/400",
+    "alt": "A modern office with developers working on computers.",
+    "width": 600,
+    "height": 400,
+    "aiHint": "software development team"
+  },
+  "webDev1": {
+    "src": "https://picsum.photos/seed/web1/600/400",
+    "alt": "An e-commerce website displayed on a laptop screen.",
+    "width": 600,
+    "height": 400,
+    "aiHint": "e-commerce website"
+  },
+  "webDev2": {
+    "src": "https://picsum.photos/seed/web2/600/400",
+    "alt": "A professional corporate website design.",
+    "width": 600,
+    "height": 400,
+    "aiHint": "corporate business"
+  },
+  "mobile1": {
+    "src": "https://picsum.photos/seed/mobile1/600/400",
+    "alt": "A person using a social media application on their smartphone.",
+    "width": 600,
+    "height": 400,
+    "aiHint": "mobile application"
+  },
+  "mobile2": {
+    "src": "https://picsum.photos/seed/mobile2/600/400",
+    "alt": "A fitness tracking app showing workout statistics.",
+    "width": 600,
+    "height": 400,
+    "aiHint": "fitness app"
+  },
+  "ai1": {
+    "src": "https://picsum.photos/seed/ai1/600/400",
+    "alt": "Abstract visualization of an artificial intelligence network.",
+    "width": 600,
+    "height": 400,
+    "aiHint": "artificial intelligence"
+  },
+  "ai2": {
+    "src": "https://picsum.photos/seed/ai2/600/400",
+    "alt": "A chatbot interface on a computer screen providing customer support.",
+    "width": 600,
+    "height": 400,
+    "aiHint": "chatbot interface"
+  },
+  "cloud1": {
+    "src": "https://picsum.photos/seed/cloud1/600/400",
+    "alt": "A diagram of a cloud computing architecture.",
+    "width": 600,
+    "height": 400,
+    "aiHint": "cloud computing"
+  },
+  "cloud2": {
+    "src": "https://picsum.photos/seed/cloud2/600/400",
+    "alt": "A dashboard showing data analytics and charts.",
+    "width": 600,
+    "height": 400,
+    "aiHint": "data analytics"
+  },
+  "seo1": {
+    "src": "https://picsum.photos/seed/seo1/600/400",
+    "alt": "A graph showing upward trending organic traffic.",
+    "width": 600,
+    "height": 400,
+    "aiHint": "marketing chart"
+  },
+  "seo2": {
+    "src": "https://picsum.photos/seed/seo2/600/400",
+    "alt": "A map with pins indicating local business search results.",
+    "width": 600,
+    "height": 400,
+    "aiHint": "local search"
+  },
+  "security1": {
+    "src": "https://picsum.photos/seed/security1/600/400",
+    "alt": "A symbolic image of a shield protecting digital data.",
+    "width": 600,
+    "height": 400,
+    "aiHint": "cyber security"
+  },
+  "security2": {
+    "src": "https://picsum.photos/seed/security2/600/400",
+    "alt": "A padlock icon over a server rack.",
+    "width": 600,
+    "height": 400,
+    "aiHint": "data protection"
+  },
+  "marketing1": {
+    "src": "https://picsum.photos/seed/marketing1/600/400",
+    "alt": "A collage of digital marketing elements like social media icons and charts.",
+    "width": 600,
+    "height": 400,
+    "aiHint": "digital marketing"
+  },
+  "marketing2": {
+    "src": "https://picsum.photos/seed/marketing2/600/400",
+    "alt": "A person scrolling through a visually appealing social media feed.",
+    "width": 600,
+    "height": 400,
+    "aiHint": "social media"
+  },
+  "consulting1": {
+    "src": "https://picsum.photos/seed/consulting1/600/400",
+    "alt": "A team of professionals in a business meeting, discussing a project.",
+    "width": 600,
+    "height": 400,
+    "aiHint": "business meeting"
+  },
+  "consulting2": {
+    "src": "https://picsum.photos/seed/consulting2/600/400",
+    "alt": "A person drawing a strategy roadmap on a whiteboard.",
+    "width": 600,
+    "height": 400,
+    "aiHint": "strategy planning"
+  }
+}

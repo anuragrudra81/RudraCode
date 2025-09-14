@@ -1,5 +1,6 @@
 import type { Service, Testimonial } from './types';
 import { Code, Smartphone, BrainCircuit, Cloud, BarChart, ShieldCheck, Megaphone, Briefcase } from 'lucide-react';
+import placeholderImages from '@/lib/placeholder-images.json';
 
 export const services: Service[] = [
   {
@@ -9,8 +10,8 @@ export const services: Service[] = [
     longDescription: 'Our web development team builds custom websites and applications tailored to your business needs. We focus on modern technologies, performance optimization, and scalable architectures to deliver a seamless user experience across all devices.',
     icon: Code,
     projects: [
-      { title: 'E-commerce Platform', description: 'A fully-featured online store with Stripe integration and a custom CMS.', image: 'https://picsum.photos/600/400', aiHint: 'e-commerce website' },
-      { title: 'Corporate Website', description: 'A sleek, professional website for a major financial services firm.', image: 'https://picsum.photos/600/400', aiHint: 'corporate business' },
+      { title: 'E-commerce Platform "ShopSphere"', description: 'Developed a fully-featured online store for a fashion retailer, resulting in a 40% increase in online sales.', image: placeholderImages.webDev1.src, aiHint: placeholderImages.webDev1.aiHint },
+      { title: 'Corporate Portal for "Financore"', description: 'A sleek, professional portal for a major financial services firm, improving client data access and security.', image: placeholderImages.webDev2.src, aiHint: placeholderImages.webDev2.aiHint },
     ],
   },
   {
@@ -20,8 +21,8 @@ export const services: Service[] = [
     longDescription: 'We design and develop native and cross-platform mobile applications that provide real value to your users. From initial concept to App Store submission, we handle the entire lifecycle of your mobile project.',
     icon: Smartphone,
     projects: [
-      { title: 'Social Media App', description: 'A community-based app for sharing photos and experiences.', image: 'https://picsum.photos/600/400', aiHint: 'mobile application' },
-      { title: 'Fitness Tracker', description: 'An iOS and Android app to monitor workouts and nutrition.', image: 'https://picsum.photos/600/400', aiHint: 'fitness app' },
+      { title: 'Community App "Connect-U"', description: 'A community-based app for sharing local events and experiences, achieving 50k+ downloads in 6 months.', image: placeholderImages.mobile1.src, aiHint: placeholderImages.mobile1.aiHint },
+      { title: 'Fitness Tracker "FitLife"', description: 'An iOS & Android app to monitor workouts, nutrition, and connect with trainers, featured on the App Store.', image: placeholderImages.mobile2.src, aiHint: placeholderImages.mobile2.aiHint },
     ],
   },
   {
@@ -31,8 +32,8 @@ export const services: Service[] = [
     longDescription: 'Our AI/ML experts help you harness the power of your data. We develop custom models for predictive analytics, natural language processing, computer vision, and more to automate processes and drive intelligent decision-making.',
     icon: BrainCircuit,
     projects: [
-      { title: 'Recommendation Engine', description: 'An AI-powered system to provide personalized product recommendations.', image: 'https://picsum.photos/600/400', aiHint: 'artificial intelligence' },
-      { title: 'Chatbot Assistant', description: 'A customer service chatbot that resolves 80% of user queries automatically.', image: 'https://picsum.photos/600/400', aiHint: 'chatbot interface' },
+      { title: 'Predictive Analytics Engine', description: 'An AI-powered system that provides personalized product recommendations, increasing user engagement by 25%.', image: placeholderImages.ai1.src, aiHint: placeholderImages.ai1.aiHint },
+      { title: 'Customer Support Chatbot "AssistAI"', description: 'A 24/7 customer service chatbot that resolves over 80% of user queries automatically, reducing support tickets.', image: placeholderImages.ai2.src, aiHint: placeholderImages.ai2.aiHint },
     ],
   },
   {
@@ -42,8 +43,8 @@ export const services: Service[] = [
     longDescription: 'We help you migrate, manage, and optimize your infrastructure on leading cloud platforms like AWS, GCP, and Azure. Our DevOps practices ensure continuous integration, delivery, and robust security for your applications.',
     icon: Cloud,
     projects: [
-      { title: 'SaaS Architecture', description: 'Designed a multi-tenant, scalable cloud backend for a growing SaaS company.', image: 'https://picsum.photos/600/400', aiHint: 'cloud computing' },
-      { title: 'Data Warehouse Migration', description: 'Migrated a legacy on-premise data warehouse to a modern cloud solution.', image: 'https://picsum.photos/600/400', aiHint: 'data analytics' },
+      { title: 'SaaS Backend for "InnovateSaaS"', description: 'Designed a multi-tenant, scalable cloud backend for a B2B SaaS company, supporting rapid user growth.', image: placeholderImages.cloud1.src, aiHint: placeholderImages.cloud1.aiHint },
+      { title: 'Data Warehouse Modernization', description: 'Migrated a legacy on-premise data warehouse to a modern cloud solution, enabling real-time analytics.', image: placeholderImages.cloud2.src, aiHint: placeholderImages.cloud2.aiHint },
     ],
   },
   {
@@ -53,8 +54,8 @@ export const services: Service[] = [
     longDescription: 'Our SEO strategies are designed to increase your search engine rankings, attract qualified leads, and grow your online presence. We cover everything from technical SEO and content strategy to link building and local search.',
     icon: BarChart,
     projects: [
-      { title: 'Organic Growth Campaign', description: 'Increased organic traffic by 300% in 6 months for a retail client.', image: 'https://picsum.photos/600/400', aiHint: 'search engine' },
-      { title: 'Local SEO Domination', description: 'Achieved top 3 rankings for all target keywords in the client\'s local area.', image: 'https://picsum.photos/600/400', aiHint: 'marketing chart' },
+      { title: 'Organic Growth for "EcoGoods"', description: 'Increased organic traffic by 300% in 6 months for an e-commerce client through targeted content strategy.', image: placeholderImages.seo1.src, aiHint: placeholderImages.seo1.aiHint },
+      { title: 'Local SEO for "CityDiner"', description: 'Achieved top 3 Google rankings for all target keywords in the client\'s local area, doubling foot traffic.', image: placeholderImages.seo2.src, aiHint: placeholderImages.seo2.aiHint },
     ],
   },
   {
@@ -64,8 +65,8 @@ export const services: Service[] = [
     longDescription: 'We provide comprehensive cybersecurity services, including vulnerability assessments, penetration testing, security audits, and incident response. Protect your business from evolving threats with our proactive security solutions.',
     icon: ShieldCheck,
     projects: [
-      { title: 'Security Audit', description: 'Identified and remediated critical vulnerabilities for a fintech startup.', image: 'https://picsum.photos/600/400', aiHint: 'cyber security' },
-      { title: 'Compliance Implementation', description: 'Helped a healthcare provider achieve HIPAA compliance.', image: 'https://picsum.photos/600/400', aiHint: 'data protection' },
+      { title: 'Fintech Security Audit', description: 'Identified and remediated critical vulnerabilities for a fast-growing fintech startup, securing millions in assets.', image: placeholderImages.security1.src, aiHint: placeholderImages.security1.aiHint },
+      { title: 'HIPAA Compliance for "HealthTrack"', description: 'Helped a healthcare provider achieve and maintain HIPAA compliance for their patient data systems.', image: placeholderImages.security2.src, aiHint: placeholderImages.security2.aiHint },
     ],
   },
   {
@@ -75,8 +76,8 @@ export const services: Service[] = [
     longDescription: 'Our digital marketing services encompass PPC, social media marketing, content marketing, and email campaigns. We create data-driven strategies to engage your audience, generate leads, and maximize your ROI.',
     icon: Megaphone,
     projects: [
-      { title: 'PPC Campaign', description: 'Managed a Google Ads campaign with a 5x return on ad spend.', image: 'https://picsum.photos/600/400', aiHint: 'digital marketing' },
-      { title: 'Social Media Growth', description: 'Grew a client\'s Instagram following from 1k to 50k in one year.', image: 'https://picsum.photos/600/400', aiHint: 'social media' },
+      { title: 'Google Ads for "StyleNow"', description: 'Managed a Google Ads campaign that achieved a 5x return on ad spend, driving significant e-commerce revenue.', image: placeholderImages.marketing1.src, aiHint: placeholderImages.marketing1.aiHint },
+      { title: 'Social Media for "GourmetBox"', description: 'Grew a food subscription client\'s Instagram following from 1k to 50k in one year through engaging content.', image: placeholderImages.marketing2.src, aiHint: placeholderImages.marketing2.aiHint },
     ],
   },
   {
@@ -86,8 +87,8 @@ export const services: Service[] = [
     longDescription: 'Our IT consulting services provide you with a strategic roadmap for your technology investments. We help with digital transformation, IT strategy, and project management to ensure your technology drives business success.',
     icon: Briefcase,
     projects: [
-      { title: 'Digital Transformation', description: 'Advised a manufacturing company on their transition to a modern IT infrastructure.', image: 'https://picsum.photos/600/400', aiHint: 'business meeting' },
-      { title: 'Technology Roadmap', description: 'Developed a 5-year technology plan for a non-profit organization.', image: 'https://picsum.photos/600/400', aiHint: 'strategy planning' },
+      { title: 'Digital Transformation Strategy', description: 'Advised a traditional manufacturing company on their successful transition to a modern, automated IT infrastructure.', image: placeholderImages.consulting1.src, aiHint: placeholderImages.consulting1.aiHint },
+      { title: '5-Year Tech Roadmap', description: 'Developed a comprehensive 5-year technology plan for a large non-profit organization to scale their impact.', image: placeholderImages.consulting2.src, aiHint: placeholderImages.consulting2.aiHint },
     ],
   },
 ];
