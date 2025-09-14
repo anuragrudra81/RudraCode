@@ -3,8 +3,6 @@
 import { z } from "zod";
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
   email: z.string().email("Invalid email address."),
@@ -36,6 +34,15 @@ export async function submitContactForm(prevState: State, formData: FormData): P
     };
   }
 
+  if (!process.env.RESEND_API_KEY) {
+    console.error("Resend API key is not configured.");
+    return {
+        message: "The contact form is not configured correctly. Please contact the site administrator.",
+        success: false,
+    };
+  }
+  
+  const resend = new Resend(process.env.RESEND_API_KEY);
   const { name, email, message } = validatedFields.data;
   const emailTo = 'anuragrudra91@gmail.com';
 
