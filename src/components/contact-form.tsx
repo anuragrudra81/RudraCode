@@ -13,7 +13,7 @@ import { Loader2, AlertCircle } from 'lucide-react';
 
 const initialState = {
   message: null,
-  errors: {},
+  errors: undefined,
   success: false,
 };
 
@@ -70,7 +70,7 @@ export default function ContactForm() {
               <p className="mt-1 text-xs text-destructive">{state.errors.message.join(", ")}</p>
             )}
           </div>
-          {state.message && !state.success && state.errors && (
+          {state.message && !state.success && (
             <Alert variant="destructive">
                 <AlertCircle className="h-4 w-4" />
                 <AlertDescription>{state.message}</AlertDescription>

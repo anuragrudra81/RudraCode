@@ -10,7 +10,7 @@ const contactSchema = z.object({
 });
 
 type State = {
-  message?: string | null;
+  message: string | null;
   errors?: {
     name?: string[];
     email?: string[];
@@ -34,10 +34,10 @@ export async function submitContactForm(prevState: State, formData: FormData): P
     };
   }
 
-  if (!process.env.RESEND_API_KEY) {
+  if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === "re_123") {
     console.error("Resend API key is not configured.");
     return {
-        message: "The contact form is not configured correctly. Please contact the site administrator.",
+        message: "The contact form is not configured correctly. Please contact the site administrator or add a valid Resend API key.",
         success: false,
     };
   }
