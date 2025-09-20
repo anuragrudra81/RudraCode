@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { Code } from 'lucide-react';
+import { TerminalSquare } from 'lucide-react';
 
 export function Logo({ className }: { className?: string }) {
   return (
     <Link href="/" className={cn("inline-block", className)}>
       <div className="flex items-center gap-2 font-headline text-2xl font-bold text-primary">
-        <Code className="h-7 w-7" />
+        <TerminalSquare className="h-7 w-7" />
         RudraCode<span className="text-foreground">.</span>
       </div>
     </Link>
