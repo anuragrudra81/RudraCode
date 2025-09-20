@@ -34,8 +34,8 @@ export async function submitContactForm(prevState: State, formData: FormData): P
     };
   }
 
-  if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === "re_123") {
-    console.error("Resend API key is not configured.");
+  if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY.startsWith("re_123")) {
+    console.error("Resend API key is not configured or is a placeholder.");
     return {
         message: "The contact form is not configured correctly. Please contact the site administrator or add a valid Resend API key.",
         success: false,
