@@ -45,13 +45,16 @@ const prompt = ai.definePrompt({
   output: {schema: SelectTestimonialsOutputSchema},
   prompt: `You are an expert marketing assistant for RudraCode, an All-in-One Internet & Software Development Agency.
 
-You are provided with a list of testimonials from past clients. Your job is to select the {{numTestimonials}} most relevant testimonials for a user who is currently viewing the {{service}} service page.
+You are provided with a list of testimonials from past clients. Your job is to select the {{numTestimonials}} most relevant testimonials for a user who is currently viewing the '{{service}}' service page.
+
+Choose testimonials that are most closely related to the service.
 
 Here are the testimonials:
-{{#each allTestimonials}}- {{{this}}}
+{{#each allTestimonials}}
+- {{{this}}}
 {{/each}}
 
-Output should be in JSON format.
+Return your answer in the requested JSON format.
 `,
 });
 
@@ -63,6 +66,9 @@ const selectTestimonialsFlow = ai.defineFlow(
   },
   async input => {
     const {output} = await prompt(input);
-    return output!;
+    if (!output || !output.selectedTestimonials) {
+      throw new Error('AI failed to return valid testimonials.');
+    }
+    return output;
   }
 );

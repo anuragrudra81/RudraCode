@@ -15,19 +15,22 @@ export default async function TestimonialsSection() {
     });
     
     // The AI returns strings. We need to find the original testimonial objects.
-    const foundTestimonials = aiResponse.selectedTestimonials.map(selectedQuote => {
-      return allTestimonials.find(t => selectedQuote.includes(t.quote));
-    }).filter((t): t is Testimonial => t !== undefined);
+    if (aiResponse && aiResponse.selectedTestimonials) {
+      const foundTestimonials = aiResponse.selectedTestimonials.map(selectedQuote => {
+        return allTestimonials.find(t => selectedQuote.includes(t.quote));
+      }).filter((t): t is Testimonial => t !== undefined);
 
-    // Remove duplicates
-    selectedTestimonials = Array.from(new Set(foundTestimonials));
+      // Remove duplicates
+      selectedTestimonials = Array.from(new Set(foundTestimonials));
+    }
 
     // Fallback if AI fails or returns fewer than expected.
     if (selectedTestimonials.length < 3) {
+      console.warn("AI returned fewer than 3 testimonials, using fallback.");
       selectedTestimonials = allTestimonials.slice(0, 3);
     }
   } catch (error) {
-    console.error("AI testimonial selection failed:", error);
+    console.error("AI testimonial selection failed:", error instanceof Error ? error.message : error);
     // Fallback to showing first 3 testimonials
     selectedTestimonials = allTestimonials.slice(0, 3);
   }
