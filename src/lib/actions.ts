@@ -34,22 +34,25 @@ export async function submitContactForm(prevState: State, formData: FormData): P
     };
   }
 
-  if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY.startsWith("re_123")) {
-    console.error("Resend API key is not configured or is a placeholder.");
+  const resendApiKey = process.env.RESEND_API_KEY;
+
+  if (!resendApiKey || resendApiKey === 're_123' || resendApiKey.startsWith("re_124qrbE7")) {
+    console.error("Resend API key is not configured or is a placeholder/revoked key.");
     return {
-        message: "The contact form is not configured correctly. Please contact the site administrator or add a valid Resend API key.",
+        message: "The contact form is not configured correctly. Please contact the site administrator.",
         success: false,
     };
   }
   
-  const resend = new Resend(process.env.RESEND_API_KEY);
+  const resend = new Resend(resendApiKey);
   const { name, email, message } = validatedFields.data;
   const emailTo = 'anuragrudra91@gmail.com';
 
   try {
     const { data, error } = await resend.emails.send({
-        from: 'Contact Form <onboarding@resend.dev>',
+        from: 'RudraCode Contact Form <noreply@rudracode.dev>',
         to: [emailTo],
+        reply_to: email,
         subject: 'New Contact Form Submission from RudraCode Hub',
         html: `
             <p>You have a new contact form submission:</p>
