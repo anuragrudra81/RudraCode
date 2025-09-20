@@ -36,7 +36,7 @@ export default function ContactForm() {
     if (state.success) {
       toast({
         title: "Message Sent!",
-        description: state.message,
+        description: "Thank you for your message! We will get back to you shortly.",
       });
       formRef.current?.reset();
     }
