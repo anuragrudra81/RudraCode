@@ -36,7 +36,7 @@ export async function submitContactForm(prevState: State, formData: FormData): P
 
   const resendApiKey = process.env.RESEND_API_KEY;
 
-  if (!resendApiKey || resendApiKey === "REPLACE_WITH_YOUR_NEW_AND_VERIFIED_RESEND_API_KEY") {
+  if (!resendApiKey || resendApiKey.startsWith("REPLACE")) {
     console.error("Resend API key is not configured.");
     return {
         message: "The contact form is not configured correctly. Please contact the site administrator.",
@@ -50,7 +50,7 @@ export async function submitContactForm(prevState: State, formData: FormData): P
 
   try {
     const { data, error } = await resend.emails.send({
-        from: 'Contact Form <contact@rudracode.dev>',
+        from: 'Acme <onboarding@resend.dev>',
         to: [emailTo],
         reply_to: email,
         subject: 'New Contact Form Submission from RudraCode Hub',
