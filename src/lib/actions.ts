@@ -33,11 +33,11 @@ export async function submitContactForm(prevState: State, formData: FormData): P
       success: false,
     };
   }
-
+  
   const resendApiKey = process.env.RESEND_API_KEY;
 
   if (!resendApiKey || resendApiKey.startsWith("REPLACE")) {
-    console.error("Resend API key is not configured.");
+    console.error("Resend API key is not configured or is a placeholder.");
     return {
         message: "The contact form is not configured correctly. Please contact the site administrator.",
         success: false,
@@ -46,25 +46,27 @@ export async function submitContactForm(prevState: State, formData: FormData): P
   
   const resend = new Resend(resendApiKey);
   const { name, email, message } = validatedFields.data;
-  const emailTo = 'anuragrudra91@gmail.com';
 
   try {
     const { data, error } = await resend.emails.send({
         from: 'Acme <onboarding@resend.dev>',
-        to: [emailTo],
+        to: ['anuragrudra91@gmail.com'],
         reply_to: email,
-        subject: 'New Contact Form Submission from RudraCode Hub',
+        subject: `New message from ${name} via RudraCode Hub`,
+        text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
         html: `
             <p>You have a new contact form submission:</p>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
+            <ul>
+                <li><strong>Name:</strong> ${name}</li>
+                <li><strong>Email:</strong> ${email}</li>
+            </ul>
             <p><strong>Message:</strong></p>
             <p>${message}</p>
         `,
     });
 
     if (error) {
-        console.error("Resend error:", error);
+        console.error("Resend API Error:", error);
         return {
             message: "Sorry, something went wrong and we couldn't send your message. Please try again later.",
             success: false,
