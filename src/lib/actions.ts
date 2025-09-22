@@ -50,7 +50,7 @@ export async function submitContactForm(prevState: State, formData: FormData): P
 
   try {
     const { data, error } = await resend.emails.send({
-        from: 'Contact Form <from@yourdomain.com>', // IMPORTANT: Replace with a from address on your verified domain in Resend
+        from: 'Contact Form <contact@rudracode.dev>',
         to: [emailTo],
         reply_to: email,
         subject: 'New Contact Form Submission from RudraCode Hub',
