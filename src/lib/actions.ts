@@ -34,11 +34,16 @@ export async function submitContactForm(prevState: State, formData: FormData): P
     };
   }
 
+  // Gracefully handle missing credentials
+  if (!process.env.GMAIL_EMAIL || !process.env.GMAIL_APP_PASSWORD) {
+    console.error("Email credentials are not set in environment variables.");
+    return {
+      message: "Could not send email. Server is missing email credentials. Please configure GMAIL_EMAIL and GMAIL_APP_PASSWORD in your .env file.",
+      success: false,
+    };
+  }
+
   const { name, email, message } = validatedFields.data;
-  
-  // This is a temporary fix. In a real application, you should handle the case
-  // where environment variables are not set. For this context, we proceed,
-  // but email sending will fail silently if credentials are not in the environment.
   
   const transporter = nodemailer.createTransport({
     service: 'gmail',
