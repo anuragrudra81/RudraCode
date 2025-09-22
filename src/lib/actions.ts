@@ -45,7 +45,7 @@ export async function submitContactForm(prevState: State, formData: FormData): P
       console.error("AI form processing exception:", exception);
       const errorMessage = exception instanceof Error ? exception.message : "An unexpected error occurred.";
       return {
-          message: `Sorry, there was a problem submitting your message. AI Error: ${errorMessage}`,
+          message: `Sorry, there was a problem submitting your message. Error: ${errorMessage}`,
           success: false,
       };
   }

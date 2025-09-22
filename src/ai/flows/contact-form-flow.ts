@@ -3,26 +3,15 @@
  * @fileOverview An AI flow to process contact form submissions.
  *
  * - processContactMessage - A function that handles the contact form data.
- * - ContactFormInput - The input type for the processContactMessage function.
- * - ContactFormOutput - The return type for the processContactMessage function.
  */
 
 import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
-
-export const ContactFormInputSchema = z.object({
-  name: z.string().describe('The name of the person submitting the form.'),
-  email: z.string().email().describe('The email address of the person.'),
-  message: z.string().describe('The message content.'),
-});
-export type ContactFormInput = z.infer<typeof ContactFormInputSchema>;
-
-export const ContactFormOutputSchema = z.object({
-  reply: z
-    .string()
-    .describe('A brief, friendly confirmation message to the user.'),
-});
-export type ContactFormOutput = z.infer<typeof ContactFormOutputSchema>;
+import {
+  ContactFormInput,
+  ContactFormInputSchema,
+  ContactFormOutput,
+  ContactFormOutputSchema,
+} from '@/ai/flows/contact-form-types';
 
 export async function processContactMessage(
   input: ContactFormInput
@@ -50,6 +39,8 @@ const contactFormFlow = ai.defineFlow(
     outputSchema: ContactFormOutputSchema,
   },
   async input => {
+    // This flow currently only uses the AI to generate a reply.
+    // It does not send an email.
     const {output} = await prompt(input);
     if (!output) {
       throw new Error('AI failed to generate a response.');
