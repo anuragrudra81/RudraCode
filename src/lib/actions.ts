@@ -36,6 +36,15 @@ export async function submitContactForm(prevState: State, formData: FormData): P
 
   const { name, email, message } = validatedFields.data;
   
+  // Before sending the email, check if the required environment variables are set.
+  if (!process.env.GMAIL_EMAIL || !process.env.GMAIL_APP_PASSWORD) {
+    console.error("Gmail credentials are not configured in the environment variables.");
+    return {
+        message: "Sorry, the email service is not configured correctly. Please contact the site administrator.",
+        success: false,
+    };
+  }
+
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -58,10 +67,6 @@ export async function submitContactForm(prevState: State, formData: FormData): P
   };
 
   try {
-    if (!process.env.GMAIL_EMAIL || !process.env.GMAIL_APP_PASSWORD) {
-        throw new Error("Gmail credentials are not configured in the environment variables.");
-    }
-      
     await transporter.sendMail(mailOptions);
     
     return {
