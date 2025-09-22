@@ -1,8 +1,7 @@
 "use server";
 
 import { z } from "zod";
-import { Resend } from "resend";
-import { processContactMessage } from "@/ai/flows/contact-form-flow";
+import nodemailer from "nodemailer";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -35,31 +34,38 @@ export async function submitContactForm(prevState: State, formData: FormData): P
     };
   }
 
+  const { name, email, message } = validatedFields.data;
+  
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.GMAIL_EMAIL,
+      pass: process.env.GMAIL_APP_PASSWORD,
+    },
+  });
+
+  const mailOptions = {
+    from: `"${name}" <${email}>`, // This will show the user's name and email as the sender
+    to: 'anuragrudra91@gmail.com', // Your email where you want to receive messages
+    subject: `New Contact Message from ${name} via RudraCode`,
+    html: `
+      <p>You received a new message from your website contact form.</p>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Message:</strong></p>
+      <p>${message.replace(/\n/g, '<br>')}</p>
+    `,
+  };
+
   try {
-    // We can still use the AI to generate a friendly reply
-    const aiPromise = processContactMessage(validatedFields.data);
+    if (!process.env.GMAIL_EMAIL || !process.env.GMAIL_APP_PASSWORD) {
+        throw new Error("Gmail credentials are not configured in the environment variables.");
+    }
+      
+    await transporter.sendMail(mailOptions);
     
-    // But we also send the email via Resend
-    const resend = new Resend(process.env.RESEND_API_KEY);
-
-    const { name, email, message } = validatedFields.data;
-
-    await resend.emails.send({
-      from: "onboarding@resend.dev",
-      to: "anuragrudra91@gmail.com",
-      subject: `New Contact Message from ${name}`,
-      html: `<p>You received a new message from your website contact form.</p>
-             <p><strong>Name:</strong> ${name}</p>
-             <p><strong>Email:</strong> ${email}</p>
-             <p><strong>Message:</strong></p>
-             <p>${message}</p>`,
-    });
-
-    // Get the friendly reply from the AI
-    const aiResponse = await aiPromise;
-
     return {
-      message: aiResponse.reply, // Use AI's friendly reply for the success message
+      message: "Thank you! Your message has been sent successfully.",
       success: true,
     };
   } catch (exception) {
